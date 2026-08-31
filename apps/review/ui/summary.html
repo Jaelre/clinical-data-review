@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Data Review - Summary</title>
+    <link rel="icon" type="image/svg+xml" href="icons/app-icon.svg">
+    <link rel="manifest" href="icons/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-nav">
+                <a href="index.html" class="back-link">← Back to Patient List</a>
+            </div>
+            <h1>Clinical Data Review</h1>
+            <h2>Review Process Summary</h2>
+        </header>
+
+        <div class="summary-dashboard">
+            <div class="summary-cards">
+                <div class="summary-card primary">
+                    <div class="summary-content">
+                        <div class="summary-number" id="totalPatients">-</div>
+                        <div class="summary-label">Total Patients</div>
+                    </div>
+                </div>
+
+                <div class="summary-card success">
+                    <div class="summary-content">
+                        <div class="summary-number" id="completedJudgments">-</div>
+                        <div class="summary-label">Completed Reviews</div>
+                    </div>
+                </div>
+
+                <div class="summary-card warning">
+                    <div class="summary-content">
+                        <div class="summary-number" id="pendingJudgments">-</div>
+                        <div class="summary-label">Pending Reviews</div>
+                    </div>
+                </div>
+
+                <div class="summary-card info">
+                    <div class="summary-content">
+                        <div class="summary-number" id="completionPercentage">-</div>
+                        <div class="summary-label">Completion Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-details">
+                <div class="progress-section">
+                    <h3>Review Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">Loading...</div>
+                </div>
+
+                <div class="judgment-breakdown">
+                    <h3>Judgment Breakdown</h3>
+                    <div class="breakdown-content" id="judgmentBreakdown">
+                        <div class="loading">Loading judgment statistics...</div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-content" id="recentActivity">
+                        <div class="loading">Loading recent activity...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="tauri-api.js"></script>
+    <script type="module" src="app-init.js"></script>
+    <script type="module" src="theme-manager.js"></script>
+    <script type="module" src="feature-flags.js"></script>
+    <script type="module" src="summary.js"></script>
+</body>
+</html>

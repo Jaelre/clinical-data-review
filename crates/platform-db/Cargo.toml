@@ -1,0 +1,22 @@
+[package]
+name = "platform-db"
+version.workspace = true
+edition.workspace = true
+description = "Database layer providing the shared SQLite interface"
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+platform-models.workspace = true
+platform-errors.workspace = true
+sqlx.workspace = true
+async-trait.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+tokio.workspace = true
+tokio-test = "0.4"
+tempfile.workspace = true

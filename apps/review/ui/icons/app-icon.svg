@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
+  <title id="title">Clinical Data Review</title>
+  <desc id="description">A document with a check mark on a dark blue background.</desc>
+  <rect width="512" height="512" rx="112" fill="#17324d"/>
+  <path d="M154 104h148l64 64v240H154z" fill="#f7fafc"/>
+  <path d="M302 104v72h64" fill="none" stroke="#9fc5d8" stroke-linejoin="round" stroke-width="24"/>
+  <path d="M202 238h116M202 286h82" fill="none" stroke="#6a8da3" stroke-linecap="round" stroke-width="20"/>
+  <path d="m205 348 38 38 78-92" fill="none" stroke="#1f8a70" stroke-linecap="round" stroke-linejoin="round" stroke-width="28"/>
+</svg>

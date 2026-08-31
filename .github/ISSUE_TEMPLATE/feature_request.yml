@@ -1,0 +1,36 @@
+name: Feature request
+description: Propose a research-oriented improvement without private data
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include PII/PHI, real datasets, institution-specific headers, private logs, or credentials.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Research problem
+      description: What problem should be solved, and for whom?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe the interface, explicit failure behavior, and local-data impact.
+    validations:
+      required: true
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy and security impact
+      description: Explain whether the proposal reads, stores, transforms, exports, or transmits data.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: This request contains no PII/PHI, real data, private logs, or credentials.
+          required: true

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Data Review - Patient Queue</title>
+    <link rel="icon" type="image/svg+xml" href="icons/app-icon.svg">
+    <link rel="manifest" href="icons/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-nav">
+                <a href="summary.html" class="back-link">View Operational Summary</a>
+            </div>
+            <h1>Clinical Data Review</h1>
+
+            <!-- Patient Selection Status -->
+            <div class="selection-status" id="selectionStatus" style="display: none;">
+                <div class="selection-info">
+                    <span id="selectionDescription"></span>
+                    <button id="viewAllPatients" class="btn-secondary">View All Patients</button>
+                </div>
+            </div>
+
+            <!-- Simple Controls -->
+            <div class="patient-controls">
+                <div class="search-section">
+                    <div class="search-input-wrapper">
+                        <input type="text"
+                               id="simplePatientSearch"
+                               class="search-input"
+                               placeholder="Search by patient ID"
+                               autocomplete="off">
+                        <button id="clearSimpleSearch" class="search-clear" style="display: none;">×</button>
+                    </div>
+                </div>
+
+                <div class="summary-stats">
+                    <span class="stat">Total <span id="totalPatients">0</span></span>
+                    <span class="stat">Reviewed <span id="judgedPatients">0</span></span>
+                    <span class="stat">Pending <span id="pendingPatients">0</span></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Research Chunk Accordion -->
+        <main class="patient-main">
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="spinner"></div>
+                <p>Loading patient data...</p>
+            </div>
+
+            <!-- Research Accordion Interface -->
+            <div class="patient-accordion" id="patientAccordion">
+                <!-- Auto-chunk accordion will be rendered here by ResearchChunkManager -->
+            </div>
+        </main>
+
+        <!-- Chunk Completion Toast (positioned fixed) -->
+        <div id="chunkCompletionToast" class="chunk-completion-toast" style="display: none;">
+            <!-- Toast content rendered dynamically -->
+        </div>
+    </div>
+
+    <script type="module" src="tauri-api.js"></script>
+    <script type="module" src="app-init.js"></script>
+    <script type="module" src="theme-manager.js"></script>
+    <script type="module" src="feature-flags.js"></script>
+    <script type="module" src="cohort-manager.js"></script>
+    <script type="module" src="research-chunk-manager.js"></script>
+</body>
+</html>

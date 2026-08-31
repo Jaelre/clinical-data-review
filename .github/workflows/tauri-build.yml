@@ -1,0 +1,51 @@
+name: Tauri build artifacts
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            artifact: linux
+          - os: macos-14
+            artifact: macos
+          - os: windows-2022
+            artifact: windows
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev libxdo-dev
+
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/review/package-lock.json
+
+      - name: Install UI dependencies
+        run: npm --prefix apps/review ci
+      - name: Build Tauri application
+        run: npm --prefix apps/review run bundle
+      - name: Upload platform artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: clinical-data-review-${{ matrix.artifact }}
+          path: |
+            target/release/bundle/**
+            target/release/clinical-data-review*
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,61 @@
+[package]
+name = "clinical-data-review"
+version.workspace = true
+edition.workspace = true
+description = "Local-only desktop application for clinical research data review"
+license.workspace = true
+authors.workspace = true
+keywords = ["healthcare", "clinical", "data", "review", "tauri"]
+categories = ["healthcare", "medicine"]
+
+[package.metadata.bundle]
+name = "Clinical Data Review"
+identifier = "org.arturodebuoi.clinicaldatareview"
+category = "Healthcare and Fitness"
+short_description = "Local clinical research data review"
+long_description = "A local-only desktop application for reviewing research datasets stored in SQLite."
+
+[package.metadata.tauri-winres]
+product_name = "Clinical Data Review"
+original_filename = "clinical-data-review.exe"
+file_description = "Clinical Data Review"
+company_name = "Arturo de Buoi"
+copyright = "Copyright 2026 Arturo de Buoi"
+
+[[bin]]
+name = "clinical-data-review"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build.workspace = true
+png.workspace = true
+
+[dependencies]
+review-core.workspace = true
+platform-models.workspace = true
+platform-db.workspace = true
+platform-errors.workspace = true
+tauri.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+csv.workspace = true
+chrono.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+anyhow.workspace = true
+log.workspace = true
+env_logger.workspace = true
+futures.workspace = true
+once_cell.workspace = true
+dirs.workspace = true
+lazy_static.workspace = true
+dotenvy.workspace = true
+uuid.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true
+tokio-test = "0.4"
+sqlx.workspace = true
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]

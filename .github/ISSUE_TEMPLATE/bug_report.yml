@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a reproducible defect using synthetic data only
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not submit PII/PHI, real datasets, private logs, credentials, database files, or screenshots of real data. Security vulnerabilities must use GitHub private vulnerability reporting, not this form.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the observed and expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Synthetic reproduction
+      description: Provide minimal steps using the committed synthetic fixtures or invented SYNTH-* values.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+    validations:
+      required: true
+  - type: dropdown
+    id: operating_system
+    attributes:
+      label: Operating system
+      options: [Linux, macOS, Windows]
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy confirmation
+      options:
+        - label: I removed all PII/PHI, credentials, private logs, and real data from this report.
+          required: true
+        - label: This is not a security vulnerability; those are reported privately through the Security tab.
+          required: true

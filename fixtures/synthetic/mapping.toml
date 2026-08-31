@@ -1,0 +1,39 @@
+[files]
+patient_demographics = "demographics.xlsx"
+
+[files.medical_notes.notes]
+filename = "notes.xlsx"
+content_columns = ["content"]
+
+[files.medical_notes.medications]
+filename = "medications.xlsx"
+content_columns = ["content"]
+
+[files.medical_notes.allergies]
+filename = "allergies.xlsx"
+content_columns = ["content"]
+
+[files.medical_notes.examinations]
+filename = "examinations.xlsx"
+content_columns = ["content"]
+
+[files.clinical_journal]
+filename = "clinical_journal.xlsx"
+timestamp_columns = ["recorded_at"]
+content_columns = ["entry"]
+role_columns = ["author_role"]
+
+[columns]
+patient_id_patterns = ["patient_id"]
+age_patterns = ["age_years"]
+sex_patterns = ["sex"]
+
+[processing]
+age_range = [0, 120]
+default_tenant_name = "Example Research Workspace"
+enable_column_detection = false
+
+[processing.sex_value_mapping]
+female = "F"
+male = "M"
+unknown = ""

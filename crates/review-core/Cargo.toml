@@ -1,0 +1,35 @@
+[package]
+name = "review-core"
+version.workspace = true
+edition.workspace = true
+description = "Core business logic for the local Clinical Data Review application"
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+# Core dependencies for business logic
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+chrono.workspace = true
+tokio.workspace = true
+anyhow.workspace = true
+log.workspace = true
+
+# Database dependencies
+sqlx.workspace = true
+uuid.workspace = true
+
+# Clinical Platform Core dependencies - Local Path
+platform-models.workspace = true
+platform-db.workspace = true
+platform-errors.workspace = true
+
+# Additional dependencies for data processing
+dirs.workspace = true
+lazy_static.workspace = true
+once_cell.workspace = true
+futures.workspace = true
+
+# Environment configuration
+dotenvy.workspace = true

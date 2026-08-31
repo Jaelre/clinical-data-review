@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Data Review - Patient Review</title>
+    <link rel="icon" type="image/svg+xml" href="icons/app-icon.svg">
+    <link rel="manifest" href="icons/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-nav">
+                <a href="index.html" class="back-link">← Back to Patient List</a>
+                <div class="patient-navigation" id="patientNavigation">
+                    <button class="nav-btn prev-btn" id="prevPatientBtn" disabled>
+                        ← Previous
+                    </button>
+                    <span class="patient-counter" id="patientCounter">
+                        Loading...
+                    </span>
+                    <button class="nav-btn next-unjudged-btn" id="nextUnjudgedBtn" disabled>
+                        Next Unjudged →
+                    </button>
+                </div>
+                <div class="patient-header-actions">
+                    <button class="flag-review-btn" id="flagReviewBtn" title="Flag for Admin Review" style="display: none;">
+                        Flag for Review
+                    </button>
+                </div>
+            </div>
+            <h1>Clinical Data Review</h1>
+
+            <!-- Patient List Source Indicator -->
+            <div class="list-source-indicator" id="listSourceIndicator" style="display: none;">
+                <span class="source-info" id="sourceInfo"></span>
+            </div>
+        </header>
+
+        <div class="patient-detail">
+            <div class="left-section">
+                <div class="patient-header" id="patientHeader">
+                    <div class="loading">Loading patient data...</div>
+                </div>
+
+                <div class="clinical-examination">
+                    <div class="exam-section">
+                        <h3>Past History</h3>
+                        <div class="text-box" id="pastHistory"></div>
+                    </div>
+
+                    <div class="exam-section">
+                        <h3>Medication</h3>
+                        <div class="text-box" id="medication"></div>
+                    </div>
+
+                    <div class="exam-section">
+                        <h3>Allergies</h3>
+                        <div class="text-box" id="allergies"></div>
+                    </div>
+
+                    <div class="exam-section">
+                        <h3>Recent History</h3>
+                        <div class="text-box" id="recentHistory"></div>
+                    </div>
+
+                    <div class="exam-section">
+                        <h3>Medical Examination</h3>
+                        <div class="text-box" id="medicalExamination"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="judgment-section">
+                    <h3>Clinical Judgment</h3>
+                    <div class="judgment-controls">
+                        <div class="judgment-buttons">
+                            <button id="appropriateBtn" class="judgment-btn appropriate">
+                                Appropriate
+                            </button>
+                            <button id="notAppropriateBtn" class="judgment-btn not-appropriate">
+                                Not Appropriate
+                            </button>
+                        </div>
+                        <div class="judgment-status" id="judgmentStatus">
+                            No judgment recorded
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clinical-notes-section">
+                    <h3>Clinical Journal Notes</h3>
+                    <div class="clinical-notes-container" style="position: relative;">
+                        <div class="clinical-notes" id="clinicalNotes">
+                            <div class="loading">Loading clinical notes...</div>
+                        </div>
+                        <div class="clinical-notes-privacy-overlay" id="clinicalNotesOverlay" style="display: none;">
+                            <div class="privacy-message">
+                                <div class="privacy-icon">Protected</div>
+                                <p>Clinical journal content is protected</p>
+                                <button class="unblur-btn" id="unblurClinicalNotes">
+                                    View clinical journal
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Review Modal -->
+    <div class="modal-overlay" id="adminReviewModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Flag Patient for Admin Review</h3>
+                <button class="modal-close" id="closeAdminModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Existing Review Display (shown when patient is already flagged) -->
+                <div class="existing-review-display" id="existingReviewDisplay" style="display: none;">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+
+                <!-- New Review Form (shown when patient is not flagged) -->
+                <div class="new-review-form">
+                    <label for="reviewReason">Why should this patient be reviewed?</label>
+                    <textarea id="reviewReason" class="review-reason-input" rows="4"
+                        placeholder="Please provide specific details about why this patient requires admin review..." required></textarea>
+                    <div class="error-message" id="reviewReasonError" style="display: none;">
+                        Please provide a reason for the review request.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelAdminReview">Cancel</button>
+                <button class="btn-primary" id="submitAdminReview">Submit Flag</button>
+                <button class="btn-danger" id="unflagReview" style="display: none;">Remove Flag</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="tauri-api.js"></script>
+    <script type="module" src="app-init.js"></script>
+    <script type="module" src="theme-manager.js"></script>
+    <script type="module" src="feature-flags.js"></script>
+    <script type="module" src="patient.js"></script>
+</body>
+</html>
